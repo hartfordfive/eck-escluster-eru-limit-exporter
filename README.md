@@ -7,7 +7,7 @@
 
 Running the server:
 ```
-./eck-cluster-eru-limit-exporter [-listen-addr <ADDR>] [-listen-port <PORT>] [-conf /path/to/config.yaml] [-debug] [-version]
+./eck-escluster-eru-limit-exporter -conf /path/to/config.yaml [-debug] [-version] [-validate]
 ```
 
 ## Command Flags
@@ -15,13 +15,9 @@ Running the server:
 `-conf` : The path to the configuration file to be used
 `-debug` : Enable debug mode
 `-version` : Show version and exit
+`-validate` : Validate configuration and exit
 
-## Configuration Options
-
-- `listen_addr` : The host on which to listen (default is 127.0.0.1)
-- `listen_port`: The port on which to listen (default is 80)
-
-A sample configuration can be found in the `examples/` directory. 
+*A sample configuration can be found in the `examples/` directory.*
 
 ## Available endpoints
 
@@ -50,7 +46,7 @@ Run `make build` to build the the binary for the current operatory system or run
 ### 3. Build Docker container
 Run the following docker command to build the image
 ```
-docker build -t eck-cluster-eru-limit-exporter:$(cat VERSION.txt) --build-arg VERSION=$(cat VERSION.txt) .
+docker build -t eck-escluster-eru-limit-exporter:$(cat VERSION.txt) --build-arg VERSION=$(cat VERSION.txt) .
 ```
 
 
