@@ -4,7 +4,6 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	//defaultLogger "log"
 	"net/http"
 	"os"
 	"os/signal"
@@ -159,9 +158,8 @@ func main() {
 		cluster := req.URL.Query().Get("cluster")
 		// In this method, we should return the ERU limit for the given
 		if _, ok := conf.Clusters[cluster]; !ok {
-			msg := fmt.Sprintf("Cluster %s not defined", cluster)
-			logger.Logger.Error(msg)
-			http.Error(w, msg, http.StatusInternalServerError)
+			logger.Logger.Error("Invalid cluster has been specified")
+			http.Error(w, "Invalid cluster has been specified", http.StatusInternalServerError)
 			return
 		}
 		val := conf.Clusters[cluster]
@@ -172,7 +170,7 @@ func main() {
 			http.Error(w, msg, http.StatusInternalServerError)
 			return
 		}
-		fmt.Fprintf(w, "%f\n", res)
+		fmt.Fprintf(w, "%d\n", res)
 
 	}).Methods("GET")
 
