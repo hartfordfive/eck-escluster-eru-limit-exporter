@@ -16,7 +16,7 @@ var (
 	)
 	MetricEruSize = prometheus.NewGauge(
 		prometheus.GaugeOpts{
-			Name: "eck_cluster_eru_size_bytes",
+			Name: "elasticsearch_eru_size_bytes",
 			Help: "The number of bytes associated to a single Enterprise Resource Unit (ERU)",
 		},
 	)
@@ -24,7 +24,7 @@ var (
 		prometheus.GaugeOpts{
 			// Namespace: "our_company",
 			// Subsystem: "blob_storage",
-			Name: "eck_cluster_eru_limit_bytes_total",
+			Name: "elasticsearch_cluster_eru_limit_bytes",
 			Help: "Total number of ERUs which have been defined for a given cluster",
 		},
 		[]string{"cluster"},
