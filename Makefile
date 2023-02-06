@@ -45,6 +45,11 @@ build: cleanall
 	echo "Output: ${BUILD_DIR}/${BINARY_NAME}"
 	CGO_ENABLED=0 GOOS=${OS} GOARCH=${ARCH} $(GOBUILD) -ldflags "-s -w -X $(PACKAGE_BASE)/version.CommitHash=$(GITHASH) -X $(PACKAGE_BASE)/version.BuildDate=$(BUILDDATE) -X $(PACKAGE_BASE)/version.Version=$(VERSION)" -o ${BUILD_DIR}/$(BINARY_NAME)
 
+build-linux: cleanall
+	echo "Output: ${BUILD_DIR}/${BINARY_NAME}"
+	CGO_ENABLED=0 GOOS=linux GOARCH=${ARCH} $(GOBUILD) -ldflags "-s -w -X $(PACKAGE_BASE)/version.CommitHash=$(GITHASH) -X $(PACKAGE_BASE)/version.BuildDate=$(BUILDDATE) -X $(PACKAGE_BASE)/version.Version=$(VERSION)" -o ${BUILD_DIR}/$(BINARY_NAME)
+
+
 build-all: cleanall
 	CGO_ENABLED=0 GOOS=linux GOARCH=${ARCH} $(GOBUILD) -ldflags "-s -w -X $(PACKAGE_BASE)/version.CommitHash=$(GITHASH) -X $(PACKAGE_BASE)/version.BuildDate=$(BUILDDATE) -X ${PACKAGE_BASE}/version.Version=${VERSION}" -o ${BUILD_DIR}/$(BASE_NAME)-$(VERSION)-linux-$(ARCH)
 	CGO_ENABLED=0 GOOS=darwin GOARCH=${ARCH} $(GOBUILD) -ldflags "-s -w -X $(PACKAGE_BASE)/version.CommitHash=$(GITHASH) -X $(PACKAGE_BASE)/version.BuildDate=$(BUILDDATE) -X ${PACKAGE_BASE}/version.Version=${VERSION}" -o ${BUILD_DIR}/$(BASE_NAME)-$(VERSION)-darwin-$(ARCH)
