@@ -1,0 +1,8 @@
+listen_addr: 127.0.0.1
+port: 9299
+metrics_path: /metrics
+eru_size: 64Gb
+clusters:
+  cluster1: 12Gb
+  cluster2: 24Gb
+  cluster3: 128Gb
